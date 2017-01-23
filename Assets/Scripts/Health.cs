@@ -15,7 +15,7 @@ public class Health : MonoBehaviour {
 		thisTransform = GetComponent<Transform>();
 	}
 
-	public float HealthPoints {
+	public float healthPoints {
 		get {
 			return _healthPoints;
 		}
@@ -37,10 +37,9 @@ public class Health : MonoBehaviour {
 	}
 
 
-	//Only for test purpose
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.Space))
-			HealthPoints = 0;
+		if (gameObject.tag == "Player")
+			Debug.Log (_healthPoints);
 	}
 }
