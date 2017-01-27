@@ -39,7 +39,5 @@ public class Health : MonoBehaviour {
 
 	void Update()
 	{
-		if (gameObject.tag == "Player")
-			Debug.Log (_healthPoints);
 	}
 }

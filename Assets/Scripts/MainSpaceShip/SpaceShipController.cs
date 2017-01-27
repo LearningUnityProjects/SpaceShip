@@ -40,19 +40,16 @@ public class SpaceShipController : MonoBehaviour {
 		shipRigidbody.velocity = new Vector2(Mathf.Clamp(shipRigidbody.velocity.x, -maxSpeed, maxSpeed),
 			Mathf.Clamp(shipRigidbody.velocity.y, -maxSpeed, maxSpeed));
 
-		//Update rotation - turn to face mouse pointer
-		//Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x,Input.mousePosition.y, 0.0f));
-		//Debug.Log (mousePosWorld);
-		//Get direction to cursor
-		//Vector3 LookDirection = mousePosWorld - shipTransform.position;
-
-		//shipTransform.localRotation = Quaternion.LookRotation(LookDirection.normalized,Vector3.forward);
-
+		//Get mouse position
 		Vector3 mousePosition = Input.mousePosition;
+		//Calculate distance from camera to ship
 		mousePosition.z = Camera.main.transform.position.z - shipTransform.position.z;
+
 		Vector3 objectPosition = Camera.main.WorldToScreenPoint(shipTransform.position);
 		mousePosition.x = mousePosition.x - objectPosition.x;
 		mousePosition.y = mousePosition.y - objectPosition.y;
+
+		//Get the angle from the ship to the mouse pointer
 		float angle = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
 		shipTransform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
 	}

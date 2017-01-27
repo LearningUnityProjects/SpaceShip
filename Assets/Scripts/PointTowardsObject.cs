@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveForwardObjectScript : MonoBehaviour {
+public class PointTowardsObject : MonoBehaviour {
 
 	private Transform objectTransform = null;
 	private Transform objectToFollow = null;
@@ -39,11 +39,7 @@ public class MoveForwardObjectScript : MonoBehaviour {
 			//First rotate towards the object
 			float angle = Mathf.Atan2 (objectToFollowPosition.y, objectToFollowPosition.x) * Mathf.Rad2Deg;
 			objectTransform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
-
-
 		}
-		//Second move
-		objectTransform.position += objectTransform.right * maxSpeed * Time.deltaTime;
 	}
 
 	void OnTriggerStay2D(Collider2D coll) {
